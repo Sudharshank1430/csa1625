@@ -1,0 +1,45 @@
+
+R version 4.3.2 (2023-10-31 ucrt) -- "Eye Holes"
+Copyright (C) 2023 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> data <- data.frame(age = c(3, 10, 17.5, 35, 65, 95),frequency = c(200, 450, 300, 1500, 700, 44))
+> hist_data <- rep(data$age, times = data$frequency)
+> hist(hist_data, main = "Histogram", xlab = "Age", ylab = "Frequency", col = "lightblue", border = "black")
+> median_value <- median(hist_data)
+> cat("Median:", median_value, "\n")
+Median: 35 
+> intervals <- c(1, 5, 15, 20, 50, 80, 110)
+> frequencies <- c(200, 450, 300, 1500, 700, 44)
+> cumulative_freq <- cumsum(frequencies)
+> median_class <- intervals[which.max(cumulative_freq >= sum(frequencies) / 2)]
+> lower_boundary <- ifelse(median_class == intervals[1], intervals[1], median_class - 0.5
++ median_value <- lower_boundary + ((sum(frequencies) / 2) - cumsum(frequencies[1:(which(intervals == median_class) - 1)])) / frequencies[which(intervals == median_class)]
+Error: unexpected symbol in:
+"lower_boundary <- ifelse(median_class == intervals[1], intervals[1], median_class - 0.5
+median_value"
+> cat("Approximate Median Value:", median_value, "\n")
+Approximate Median Value: 35 
+> intervals <- c(1, 5, 15, 20, 50, 80, 110)
+> frequencies <- c(200, 450, 300, 1500, 700, 44)
+> cumulative_freq <- cumsum(frequencies)
+> median_class <- intervals[which.max(cumulative_freq >= sum(frequencies) / 2)]
+> lower_boundary <- ifelse(median_class == intervals[1], intervals[1], median_class - 0.5)
+> median_value <- lower_boundary + ((sum(frequencies) / 2) - cumsum(frequencies[1:(which(intervals == median_class) - 1)])) / frequencies[which(intervals == median_class)]
+> cat("Approximate Median Value:", median_value, "\n")
+Approximate Median Value: 20.43133 20.13133 19.93133 
+> 
